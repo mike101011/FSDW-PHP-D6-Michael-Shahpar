@@ -9,7 +9,7 @@ if (isset($_SESSION['adm'])) {
 }
 // if session is not set this will redirect to login page
 if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
-    header("Location: index.php");
+    header("Location: login.php");
     exit;
 }
 
@@ -30,14 +30,13 @@ if ($res_hotels->num_rows > 0) {
                 <h5 class='card-title'>" . $row2['hotel_name'] . "</h5>
                 <p class='card-text'>" . $row2['address'] . "</p>
                 <h6>Price per night: " . $row2['price'] . " Euros</h6>
-                <a href='#' class='btn btn-primary'>Book</a>
             </div>
         </div>
     </div>";
         $hotel_opt .= "<option value='{$row2['hotel_id']}'>{$row2['hotel_name']}</option>";
     }
 }
-$message;
+$message = '';
 if ($_POST) {
     $hotel = $_POST['hotels'];
     $customer = $_POST['id'];
